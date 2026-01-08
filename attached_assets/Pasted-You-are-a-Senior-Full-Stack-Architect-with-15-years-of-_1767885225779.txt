@@ -1,0 +1,185 @@
+You are a Senior Full-Stack Architect with 15+ years of experience building
+high-performance, scalable SaaS platforms used by millions.
+
+Your task is to DESIGN and GENERATE a COMPLETE production-ready web application
+named **Project 099** — an ALL-IN-ONE DIGITAL TOOLS PLATFORM.
+
+════════════════════════════════════
+🎯 PRODUCT VISION
+════════════════════════════════════
+Project 099 is a modern, Gen-Z friendly, ultra-fast web application that provides
+ALL tools in ONE website:
+
+• Image tools (BG remover, compress, resize, OCR)
+• PDF tools (merge, split, convert, compress)
+• Video & audio tools (convert, compress, subtitle)
+• AI tools (text, resume, image, chat, code)
+• Developer tools (JSON, regex, minify, API test)
+• Cybersecurity tools (breach checker, password audit, hash tools)
+
+The platform must be:
+✔ Extremely fast
+✔ Scalable to millions of users
+✔ Secure by design
+✔ Modular & extensible
+✔ SaaS-ready with subscriptions
+
+════════════════════════════════════
+🧠 TECH STACK (NO PYTHON)
+════════════════════════════════════
+
+Frontend:
+- Next.js 14 (App Router)
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Zustand / Redux Toolkit
+- TanStack Query
+- Web Workers
+
+Backend:
+- Node.js (LTS)
+- NestJS (Modular architecture)
+- Fastify (High-performance HTTP)
+- REST + GraphQL
+- WebSockets (real-time updates)
+
+Media & AI Processing (Node / WASM):
+- FFmpeg.wasm (video/audio processing)
+- Sharp (image processing)
+- ImageMagick (image transforms)
+- Tesseract.js (OCR)
+- ONNX Runtime Web
+- TensorFlow.js
+- OpenAI-compatible APIs (optional)
+
+Database:
+- PostgreSQL (main relational DB)
+- Redis (cache, queues, rate limiting)
+- ClickHouse (analytics & logs)
+
+Storage:
+- Cloudflare R2 / AWS S3
+- CDN-enabled file delivery
+
+Auth & Security:
+- OAuth (Google, GitHub)
+- JWT + Refresh tokens
+- Argon2 password hashing
+- Rate limiting (Redis)
+- File sandboxing
+- Zero-trust architecture
+
+Payments:
+- Stripe / Razorpay
+- Credit-based usage system
+- Webhook-based billing events
+
+════════════════════════════════════
+⚡ PERFORMANCE REQUIREMENTS
+════════════════════════════════════
+
+• Edge rendering (Vercel / Cloudflare)
+• Fastify over Express
+• Streaming uploads/downloads
+• Chunked file processing
+• Background job queues (BullMQ)
+• Horizontal scaling
+• Serverless + container hybrid
+
+════════════════════════════════════
+📁 FILE & FOLDER STRUCTURE
+════════════════════════════════════
+
+/project-099
+│
+├── apps
+│   ├── web (Next.js frontend)
+│   │   ├── app
+│   │   │   ├── page.tsx
+│   │   │   ├── dashboard
+│   │   │   ├── tools
+│   │   │   │   ├── image
+│   │   │   │   ├── pdf
+│   │   │   │   ├── video
+│   │   │   │   ├── ai
+│   │   │   │   └── security
+│   │   ├── components
+│   │   ├── hooks
+│   │   ├── lib
+│   │   └── styles
+│   │
+│   ├── api (NestJS backend)
+│   │   ├── src
+│   │   │   ├── auth
+│   │   │   ├── users
+│   │   │   ├── tools
+│   │   │   ├── billing
+│   │   │   ├── uploads
+│   │   │   ├── queues
+│   │   │   └── security
+│   │   └── main.ts
+│
+├── workers
+│   ├── image-worker
+│   ├── video-worker
+│   ├── pdf-worker
+│   └── ai-worker
+│
+├── packages
+│   ├── ui (shared components)
+│   ├── utils
+│   └── config
+│
+├── infra
+│   ├── docker
+│   ├── nginx
+│   ├── kubernetes
+│   └── terraform
+│
+├── docs
+│   ├── api.md
+│   ├── architecture.md
+│   └── security.md
+│
+└── README.md
+
+════════════════════════════════════
+🧩 CORE FEATURES TO IMPLEMENT
+════════════════════════════════════
+
+• Drag & Drop interface
+• Tool usage credits
+• Real-time progress indicators
+• Auto file deletion (privacy-first)
+• Tool recommendation engine
+• Admin analytics dashboard
+• Public API for developers
+
+════════════════════════════════════
+🎨 UI / UX REQUIREMENTS
+════════════════════════════════════
+
+• Clean SaaS-grade UI
+• Dark + Light mode
+• Gen-Z typography
+• Smooth micro-interactions
+• Mobile-first design
+• Zero clutter experience
+
+════════════════════════════════════
+🚀 OUTPUT EXPECTATION
+════════════════════════════════════
+
+Generate:
+1. Complete architecture explanation
+2. Production-grade code snippets
+3. API contracts & schemas
+4. Database schema
+5. Deployment & CI/CD strategy
+6. Security hardening checklist
+7. Scalability roadmap
+
+Respond with clean, structured, professional output.
+Do NOT simplify.
+Build like a real unicorn startup.
