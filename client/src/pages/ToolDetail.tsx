@@ -5,7 +5,7 @@ import { ObjectUploader } from "@/components/ObjectUploader";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { ResultViewer } from "@/components/ResultViewer";
-import { Loader2, ArrowLeft, UploadCloud, AlertCircle } from "lucide-react";
+import { Loader2, ArrowLeft, UploadCloud, AlertCircle, Image, FileText, Video, Sparkles, ShieldAlert, Braces } from "lucide-react";
 import { Link } from "wouter";
 import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";

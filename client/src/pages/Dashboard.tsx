@@ -144,36 +144,67 @@ export default function Dashboard() {
                     transition={{ delay: 0.6 + (idx * 0.1) }}
                     className="bg-white border border-border/50 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col"
                   >
-                    <div className="p-4 flex flex-col flex-1">
-                      <div className="flex items-center justify-between mb-2">
-                        <h3 className="font-bold text-lg text-slate-800">{tool.name}</h3>
+                    {/* Tool Header Color/Icon based on category */}
+                    <div className={`p-4 pb-0 flex flex-col items-center justify-center ${
+                      tool.slug === 'remove-bg' ? 'bg-[#EEF2FF]' :
+                      tool.slug === 'pdf-merge' ? 'bg-[#FFF1F2]' :
+                      tool.slug === 'text-to-image' ? 'bg-[#F0FDF4]' :
+                      'bg-[#F8FAFC]'
+                    }`}>
+                      <div className="flex flex-col items-center justify-center pt-4 pb-2">
+                         <h3 className="font-bold text-lg text-slate-900 mb-1">{tool.name}</h3>
+                         <p className="text-[10px] text-slate-500 uppercase tracking-wider mb-4 font-semibold">
+                           {tool.slug === 'remove-bg' ? 'Instantly erase image backgrounds' : 
+                            tool.slug === 'pdf-merge' ? 'Combine your PDF files with ease' : 
+                            tool.slug === 'text-to-image' ? 'Generate stunning images from text' : 
+                            'Convert video audio in seconds'}
+                         </p>
                       </div>
-                      <p className="text-xs text-slate-500 mb-4">{tool.description}</p>
                       
-                      <div className="flex-1 bg-slate-50 rounded-xl mb-4 relative overflow-hidden group">
-                         <div className="absolute inset-0 flex items-center justify-center p-4">
-                            {tool.slug === 'remove-bg' ? (
-                              <div className="relative w-full h-full flex flex-col items-center justify-center">
-                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop" alt="Preview" className="w-24 h-24 rounded-full object-cover shadow-lg" />
-                                <div className="mt-4 w-full h-8 bg-white border border-slate-200 rounded-lg flex items-center justify-center text-[10px] text-slate-400">Upload Image</div>
-                              </div>
-                            ) : tool.slug === 'pdf-merge' ? (
-                              <div className="flex gap-2">
-                                <div className="w-10 h-12 bg-red-100 rounded border border-red-200" />
-                                <div className="w-10 h-12 bg-emerald-100 rounded border border-emerald-200" />
-                              </div>
-                            ) : tool.slug === 'text-to-image' ? (
-                              <div className="w-full h-full bg-gradient-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center">
-                                <Sparkles className="w-8 h-8 text-white/50" />
-                              </div>
-                            ) : (
-                              <div className="w-12 h-12 bg-slate-200 rounded-full animate-pulse" />
-                            )}
-                         </div>
+                      <div className="w-full aspect-[4/3] bg-white rounded-t-xl border-x border-t border-slate-100 flex items-center justify-center relative overflow-hidden">
+                         {tool.slug === 'remove-bg' ? (
+                            <div className="flex flex-col items-center">
+                               <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop" alt="Preview" className="w-16 h-16 rounded-full object-cover shadow-md mb-2" />
+                               <div className="w-24 h-6 bg-[#F1F5F9] border border-slate-200 rounded-lg flex items-center justify-center text-[8px] text-slate-400">Upload Image</div>
+                            </div>
+                         ) : tool.slug === 'pdf-merge' ? (
+                            <div className="flex gap-2">
+                               <div className="w-10 h-14 bg-[#FEE2E2] rounded flex items-center justify-center border border-red-200 shadow-sm relative overflow-hidden">
+                                  <FileText className="w-6 h-6 text-red-500" />
+                               </div>
+                               <div className="w-10 h-14 bg-[#D1FAE5] rounded flex items-center justify-center border border-emerald-200 shadow-sm relative overflow-hidden">
+                                  <FileText className="w-6 h-6 text-emerald-500" />
+                               </div>
+                            </div>
+                         ) : tool.slug === 'text-to-image' ? (
+                            <div className="w-full h-full p-4">
+                               <div className="w-full h-full bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-lg flex items-center justify-center shadow-inner">
+                                  <div className="text-white flex flex-col items-center">
+                                     <Sparkles className="w-8 h-8 mb-1" />
+                                  </div>
+                               </div>
+                            </div>
+                         ) : (
+                            <div className="flex gap-4">
+                               <div className="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center border-4 border-slate-700 shadow-xl">
+                                  <div className="w-2 h-2 bg-blue-400 rounded-full" />
+                               </div>
+                               <div className="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center border-4 border-slate-700 shadow-xl">
+                                  <div className="w-4 h-4 bg-gradient-to-r from-red-500 to-orange-500 rounded-full" />
+                               </div>
+                            </div>
+                         )}
                       </div>
+                    </div>
 
+                    <div className="p-4 bg-white">
                       <Link href={`/tools/${tool.slug}`}>
-                        <Button className="w-full bg-[#3B82F6] hover:bg-[#2563EB] text-white rounded-lg h-9 text-sm font-medium shadow-lg shadow-blue-500/20">
+                        <Button className={`w-full text-white rounded-lg h-10 text-sm font-medium shadow-md transition-all ${
+                          tool.slug === 'remove-bg' ? 'bg-[#FFFFFF] text-slate-600 border border-slate-200 hover:bg-slate-50' :
+                          tool.slug === 'pdf-merge' ? 'bg-[#8B5CF6] hover:bg-[#7C3AED]' :
+                          tool.slug === 'text-to-image' ? 'bg-[#10B981] hover:bg-[#059669]' :
+                          'bg-[#1E40AF] hover:bg-[#1E3A8A]'
+                        }`}>
                           {tool.slug === 'remove-bg' ? 'Upload Image' : tool.slug === 'pdf-merge' ? 'Select Files' : tool.slug === 'text-to-image' ? 'Create Now' : 'Convert'}
                         </Button>
                       </Link>
