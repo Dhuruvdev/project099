@@ -171,20 +171,64 @@ export default function ToolDetail() {
                 <div className="grid lg:grid-cols-2 gap-12">
                    {/* Upload Section */}
                    <div className="space-y-6">
-                      <div className="border-2 border-dashed border-border/60 rounded-[1.5rem] p-12 flex flex-col items-center justify-center text-center hover:bg-muted/30 hover:border-primary/40 transition-all cursor-pointer group relative min-h-[300px]">
-                        <div className="w-16 h-16 bg-[#F1F5F9] rounded-2xl flex items-center justify-center mb-6">
-                           <Image className="w-8 h-8 text-[#3B82F6]" />
+                      <ObjectUploader
+                        onGetUploadParameters={async (file) => {
+                          const res = await fetch("/api/uploads/request-url", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({
+                              name: file.name,
+                              size: file.size,
+                              contentType: file.type,
+                            }),
+                          });
+                          const { uploadURL, objectPath } = await res.json();
+                          setFileUrl(objectPath);
+                          setFileName(file.name);
+                          return {
+                            method: "PUT",
+                            url: uploadURL,
+                            headers: { "Content-Type": file.type },
+                          };
+                        }}
+                      >
+                        <div className="border-2 border-dashed border-border/60 rounded-[1.5rem] p-12 flex flex-col items-center justify-center text-center hover:bg-muted/30 hover:border-primary/40 transition-all cursor-pointer group relative min-h-[300px]">
+                          <div className="w-16 h-16 bg-[#F1F5F9] rounded-2xl flex items-center justify-center mb-6">
+                            <Image className="w-8 h-8 text-[#3B82F6]" />
+                          </div>
+                          <p className="text-xl font-semibold text-[#1E293B]">Drop an image here or</p>
+                          <Button className="mt-4 bg-[#8B5CF6] hover:bg-[#7C3AED] text-white px-10 rounded-xl h-12 shadow-lg shadow-purple-500/30">
+                             Upload Image
+                          </Button>
                         </div>
-                        <p className="text-xl font-semibold text-[#1E293B]">Drop an image here or</p>
-                        <Button className="mt-4 bg-[#8B5CF6] hover:bg-[#7C3AED] text-white px-10 rounded-xl h-12 shadow-lg shadow-purple-500/30">
-                           Upload Image
-                        </Button>
-                      </div>
+                      </ObjectUploader>
 
                       <div className="flex bg-[#F1F5F9] p-1.5 rounded-xl gap-1">
                          <Button variant="secondary" className="flex-1 bg-white shadow-sm text-primary rounded-lg h-9">Background Remover</Button>
                          <Button variant="ghost" className="flex-1 text-muted-foreground rounded-lg h-9">Image Compressor</Button>
                          <Button variant="ghost" className="flex-1 text-muted-foreground rounded-lg h-9">Image Resize</Button>
+                      </div>
+
+                      {fileName && (
+                        <div className="flex items-center gap-2 p-3 bg-primary/5 text-primary rounded-lg text-sm font-medium border border-primary/20">
+                          <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                          {fileName}
+                        </div>
+                      )}
+                      
+                      <div className="flex justify-end pt-4">
+                        <Button 
+                          size="lg" 
+                          onClick={handleProcess} 
+                          disabled={isProcessing || (!inputText && !fileUrl)}
+                          className="bg-[#3B82F6] hover:bg-[#2563EB] text-white px-8 rounded-xl h-12 shadow-lg shadow-blue-500/20"
+                        >
+                          {isProcessing ? (
+                            <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Processing...</>
+                          ) : (
+                            "Start Process"
+                          )}
+                        </Button>
                       </div>
                    </div>
 

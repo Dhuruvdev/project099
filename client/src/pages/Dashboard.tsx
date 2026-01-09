@@ -102,18 +102,23 @@ export default function Dashboard() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 + (idx * 0.1) }}
-                className="bg-card hover:bg-card/80 border border-border/50 rounded-2xl p-6 shadow-lg shadow-black/5 hover:shadow-xl transition-all duration-300 group"
+                className="bg-white border border-border/50 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 group relative"
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div className={`p-3 rounded-xl ${cat.bg} ${cat.color} group-hover:scale-110 transition-transform duration-300`}>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={`p-2 rounded-lg ${cat.bg} ${cat.color}`}>
                     {cat.icon}
                   </div>
+                  <h3 className="text-xl font-bold">{cat.name}</h3>
                 </div>
-                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{cat.name}</h3>
-                <p className="text-muted-foreground text-sm mb-6">{cat.desc}</p>
-                <Button className="w-full justify-between bg-primary/5 hover:bg-primary text-primary hover:text-white border-0 group-hover:shadow-md transition-all duration-300">
-                  Try Now <ArrowRight className="w-4 h-4" />
-                </Button>
+                <p className="text-slate-600 text-sm mb-12">{cat.desc}</p>
+                <div className="absolute bottom-6 right-6 flex items-center gap-3">
+                  <div className="h-px w-24 bg-slate-100 hidden sm:block" />
+                  <Link href={`/category/${cat.id}`}>
+                    <Button className="bg-[#8B5CF6] hover:bg-[#7C3AED] text-white px-6 rounded-lg h-9 text-sm font-medium border-0 shadow-lg shadow-purple-500/20">
+                      Try Now
+                    </Button>
+                  </Link>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -137,22 +142,39 @@ export default function Dashboard() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 + (idx * 0.1) }}
-                    className="group bg-card border border-border/50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300"
+                    className="bg-white border border-border/50 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col"
                   >
-                    <div className="aspect-[4/3] bg-gradient-to-br from-primary/5 to-primary/10 relative p-6 flex flex-col items-center justify-center text-center group-hover:from-primary/10 group-hover:to-primary/20 transition-colors">
-                      <div className="p-4 bg-white dark:bg-card rounded-2xl shadow-lg mb-4 group-hover:scale-110 transition-transform duration-300">
-                        {CATEGORY_ICONS[tool.category]}
+                    <div className="p-4 flex flex-col flex-1">
+                      <div className="flex items-center justify-between mb-2">
+                        <h3 className="font-bold text-lg text-slate-800">{tool.name}</h3>
                       </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-6">
-                         <span className="text-white font-medium text-sm">Launch Tool</span>
+                      <p className="text-xs text-slate-500 mb-4">{tool.description}</p>
+                      
+                      <div className="flex-1 bg-slate-50 rounded-xl mb-4 relative overflow-hidden group">
+                         <div className="absolute inset-0 flex items-center justify-center p-4">
+                            {tool.slug === 'remove-bg' ? (
+                              <div className="relative w-full h-full flex flex-col items-center justify-center">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop" alt="Preview" className="w-24 h-24 rounded-full object-cover shadow-lg" />
+                                <div className="mt-4 w-full h-8 bg-white border border-slate-200 rounded-lg flex items-center justify-center text-[10px] text-slate-400">Upload Image</div>
+                              </div>
+                            ) : tool.slug === 'pdf-merge' ? (
+                              <div className="flex gap-2">
+                                <div className="w-10 h-12 bg-red-100 rounded border border-red-200" />
+                                <div className="w-10 h-12 bg-emerald-100 rounded border border-emerald-200" />
+                              </div>
+                            ) : tool.slug === 'text-to-image' ? (
+                              <div className="w-full h-full bg-gradient-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center">
+                                <Sparkles className="w-8 h-8 text-white/50" />
+                              </div>
+                            ) : (
+                              <div className="w-12 h-12 bg-slate-200 rounded-full animate-pulse" />
+                            )}
+                         </div>
                       </div>
-                    </div>
-                    <div className="p-5">
-                      <h3 className="font-bold text-lg mb-1 group-hover:text-primary transition-colors">{tool.name}</h3>
-                      <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{tool.description}</p>
+
                       <Link href={`/tools/${tool.slug}`}>
-                        <Button className="w-full bg-[#3B82F6] hover:bg-[#2563EB] text-white rounded-xl shadow-lg shadow-blue-500/20">
-                          {tool.category === 'video' || tool.category === 'pdf' ? 'Convert' : 'Create Now'}
+                        <Button className="w-full bg-[#3B82F6] hover:bg-[#2563EB] text-white rounded-lg h-9 text-sm font-medium shadow-lg shadow-blue-500/20">
+                          {tool.slug === 'remove-bg' ? 'Upload Image' : tool.slug === 'pdf-merge' ? 'Select Files' : tool.slug === 'text-to-image' ? 'Create Now' : 'Convert'}
                         </Button>
                       </Link>
                     </div>
