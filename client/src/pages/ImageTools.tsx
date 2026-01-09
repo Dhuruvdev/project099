@@ -26,42 +26,39 @@ const TOOLS = [
 
 export default function ImageTools() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#1A0B2E] via-[#2D1B4E] to-[#1A0B2E] flex flex-col items-center justify-center p-4 lg:p-8 font-sans">
+    <div className="min-h-screen bg-white flex flex-col font-sans">
       <Helmet>
         <title>Remove Background - Project 099</title>
       </Helmet>
       
-      {/* Container - Replicating the screenshot's frame */}
-      <div className="w-full max-w-[1200px] bg-[#F5F7FF] rounded-[40px] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col relative">
+      {/* Full Width Top Header */}
+      <header className="bg-[#1A0B2E] px-8 py-5 flex items-center justify-between w-full">
+        <div className="flex items-center gap-2">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center font-bold text-white text-2xl shadow-lg">
+            P
+          </div>
+          <span className="text-2xl font-bold text-white tracking-tight">Project 099</span>
+        </div>
         
-        {/* Top Header - Matching Screenshot Exactly */}
-        <header className="bg-[#1A0B2E] px-8 py-5 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center font-bold text-white text-2xl shadow-lg">
-              P
-            </div>
-            <span className="text-2xl font-bold text-white tracking-tight">Project 099</span>
+        <nav className="hidden lg:flex items-center gap-8">
+          <div className="flex items-center gap-1 text-white/90 font-medium cursor-pointer hover:text-white transition-colors">
+            Image Tools <ChevronDown className="w-4 h-4 opacity-50" />
           </div>
-          
-          <nav className="hidden lg:flex items-center gap-8">
-            <div className="flex items-center gap-1 text-white/90 font-medium cursor-pointer hover:text-white transition-colors">
-              Image Tools <ChevronDown className="w-4 h-4 opacity-50" />
-            </div>
-            <div className="flex items-center gap-1 text-white/90 font-medium cursor-pointer hover:text-white transition-colors">
-              Pricing <div className="w-5 h-5 bg-rose-500 rounded-full flex items-center justify-center text-[10px]">✕</div>
-            </div>
-            <div className="text-white/90 font-medium cursor-pointer hover:text-white transition-colors">
-              Community
-            </div>
-          </nav>
-
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" className="text-white hover:bg-white/10 px-6 rounded-xl font-bold">Login</Button>
-            <Button className="bg-white text-[#1A0B2E] hover:bg-slate-100 px-8 rounded-xl font-bold shadow-lg">Sign Up</Button>
+          <div className="flex items-center gap-1 text-white/90 font-medium cursor-pointer hover:text-white transition-colors">
+            Pricing <div className="w-5 h-5 bg-rose-500 rounded-full flex items-center justify-center text-[10px]">✕</div>
           </div>
-        </header>
+          <div className="text-white/90 font-medium cursor-pointer hover:text-white transition-colors">
+            Community
+          </div>
+        </nav>
 
-        <div className="flex flex-1 overflow-hidden">
+        <div className="flex items-center gap-4">
+          <Button variant="ghost" className="text-white hover:bg-white/10 px-6 rounded-xl font-bold">Login</Button>
+          <Button className="bg-white text-[#1A0B2E] hover:bg-slate-100 px-8 rounded-xl font-bold shadow-lg">Sign Up</Button>
+        </div>
+      </header>
+
+      <div className="flex flex-1 overflow-hidden w-full">
           {/* Sidebar - Matching Screenshot EXACTLY */}
           <aside className="w-[280px] bg-[#F5F7FF] border-r border-slate-200/50 p-8 flex flex-col gap-10">
             <div className="space-y-6">
@@ -172,8 +169,8 @@ export default function ImageTools() {
         </div>
       </div>
 
-      {/* Mobile Footer fix */}
-      <div className="lg:hidden fixed bottom-6 left-6 right-6 bg-[#1A0B2E]/90 backdrop-blur-xl rounded-2xl p-4 flex justify-around items-center z-50 shadow-2xl border border-white/10">
+      {/* Mobile Footer Navigation */}
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-[#1A0B2E] p-4 flex justify-around items-center z-50 shadow-2xl border-t border-white/10">
         <Link href="/"><ImageIcon className="w-6 h-6 text-white/50 hover:text-white transition-colors" /></Link>
         <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-lg"><Upload className="w-6 h-6 text-[#1A0B2E]" /></div>
         <Link href="/pricing"><Sparkles className="w-6 h-6 text-white/50 hover:text-white transition-colors" /></Link>
