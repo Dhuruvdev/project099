@@ -95,10 +95,14 @@
   }
 
   .premium-gradient {
-    @apply bg-gradient-to-br from-primary via-purple-500 to-pink-500;
+    @apply bg-gradient-to-br from-[#2C1A5C] via-[#3B2A7C] to-[#4C3A9C];
   }
   
   .premium-gradient-text {
     @apply bg-clip-text text-transparent bg-gradient-to-br from-primary via-purple-500 to-pink-500;
+  }
+
+  .hero-wash {
+    background: linear-gradient(135deg, rgba(44, 26, 92, 0.95) 0%, rgba(26, 17, 56, 0.9) 100%);
   }
 }

@@ -32,7 +32,8 @@ export default function Dashboard() {
       
       <main className="flex-1 w-full">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-[#2C1A5C] text-white pt-32 pb-24 px-8 lg:px-12">
+        <section className="relative overflow-hidden premium-gradient text-white pt-32 pb-24 px-8 lg:px-12">
+          <div className="absolute inset-0 hero-wash pointer-events-none" />
           {/* Decorative background gradients */}
           <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-purple-500/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3 pointer-events-none" />
@@ -64,10 +65,10 @@ export default function Dashboard() {
                 transition={{ delay: 0.2 }}
                 className="flex items-center gap-4"
               >
-                <Button size="lg" className="bg-[#8B5CF6] hover:bg-[#7C3AED] text-white px-8 rounded-xl h-12 text-base font-medium border-0 hover-elevate">
+                <Button size="lg" className="bg-[#8B5CF6] hover:bg-[#7C3AED] text-white px-8 rounded-xl h-12 text-base font-medium border-0 shadow-lg shadow-purple-500/20">
                   Get Started
                 </Button>
-                <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 px-8 rounded-xl h-12 text-base font-medium">
+                <Button size="lg" variant="outline" className="border-white/20 text-white bg-white/5 backdrop-blur-sm hover:bg-white/10 px-8 rounded-xl h-12 text-base font-medium">
                   Explore Tools
                 </Button>
               </motion.div>
@@ -82,28 +83,36 @@ export default function Dashboard() {
             >
               <div className="relative z-10">
                 {/* Main Laptop/Screen Mockup */}
-                <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-2xl border border-white/20 p-2 shadow-2xl">
+                <div className="relative bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-md rounded-2xl border border-white/30 p-2 shadow-2xl">
                    <div className="bg-[#1a1b26] rounded-xl aspect-[16/10] overflow-hidden relative shadow-inner">
                       {/* Screen Content Mockup */}
                       <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 to-blue-900/40" />
                       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                         <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-lg border border-white/20 shadow-xl">
-                           <Video className="w-10 h-10 text-white" />
+                           <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white">
+                             <div className="w-0 h-0 border-t-[8px] border-t-transparent border-l-[12px] border-l-white border-b-[8px] border-b-transparent ml-1" />
+                           </div>
                         </div>
                       </div>
                    </div>
-                   {/* Floating Elements */}
-                   <div className="absolute -top-12 -left-12 p-4 bg-white rounded-2xl shadow-xl animate-bounce duration-[3000ms]">
-                      <FileText className="w-8 h-8 text-orange-500" />
+                   {/* Floating Elements - Matching screenshot icons */}
+                   <div className="absolute -top-12 -left-12 p-3 bg-white rounded-xl shadow-xl animate-bounce duration-[3000ms]">
+                      <FileText className="w-8 h-8 text-[#A855F7]" />
                    </div>
-                   <div className="absolute -top-8 right-12 p-3 bg-white rounded-2xl shadow-xl animate-bounce duration-[4000ms] delay-700">
-                      <Image className="w-6 h-6 text-emerald-500" />
+                   <div className="absolute -top-16 left-1/4 p-3 bg-white rounded-xl shadow-xl animate-bounce duration-[4000ms] delay-200">
+                      <Image className="w-8 h-8 text-[#EF4444]" />
                    </div>
-                   <div className="absolute top-1/2 -right-16 p-4 bg-white rounded-2xl shadow-xl animate-bounce duration-[5000ms] delay-500">
-                      <BrainCircuit className="w-8 h-8 text-blue-500" />
+                   <div className="absolute -top-12 right-1/4 p-3 bg-white rounded-xl shadow-xl animate-bounce duration-[3500ms] delay-500">
+                      <Sparkles className="w-8 h-8 text-[#06B6D4]" />
                    </div>
-                   <div className="absolute -bottom-8 -left-8 p-3 bg-white rounded-2xl shadow-xl animate-bounce duration-[3500ms] delay-200">
-                      <ShieldAlert className="w-6 h-6 text-teal-500" />
+                   <div className="absolute -top-8 right-0 p-3 bg-white rounded-xl shadow-xl animate-bounce duration-[4500ms] delay-100">
+                      <Video className="w-8 h-8 text-[#6366F1]" />
+                   </div>
+                   <div className="absolute top-1/2 -right-16 p-3 bg-white rounded-xl shadow-xl animate-bounce duration-[5000ms] delay-700">
+                      <ShieldAlert className="w-8 h-8 text-[#22C55E]" />
+                   </div>
+                   <div className="absolute -bottom-8 right-12 p-3 bg-white rounded-xl shadow-xl animate-bounce duration-[3800ms] delay-300">
+                      <Braces className="w-8 h-8 text-[#1E293B]" />
                    </div>
                 </div>
               </div>
