@@ -1,3 +1,4 @@
+import heroIllustration from "@assets/file_00000000cb5472069fec77caec25b299_1767956419094.png";
 import { Navbar } from "@/components/Navbar";
 import { useTools } from "@/hooks/use-tools";
 import { Image, FileText, Video, BrainCircuit, ShieldAlert, Braces, Sparkles, ArrowRight, Eraser, Music, Loader2 } from "lucide-react";
@@ -82,39 +83,11 @@ export default function Dashboard() {
               className="relative hidden lg:block"
             >
               <div className="relative z-10">
-                {/* Main Laptop/Screen Mockup */}
-                <div className="relative bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-md rounded-2xl border border-white/30 p-2 shadow-2xl">
-                   <div className="bg-[#1a1b26] rounded-xl aspect-[16/10] overflow-hidden relative shadow-inner">
-                      {/* Screen Content Mockup */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 to-blue-900/40" />
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-lg border border-white/20 shadow-xl">
-                           <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white">
-                             <div className="w-0 h-0 border-t-[8px] border-t-transparent border-l-[12px] border-l-white border-b-[8px] border-b-transparent ml-1" />
-                           </div>
-                        </div>
-                      </div>
-                   </div>
-                   {/* Floating Elements - Matching screenshot icons */}
-                   <div className="absolute -top-12 -left-12 p-3 bg-white rounded-xl shadow-xl animate-bounce duration-[3000ms]">
-                      <FileText className="w-8 h-8 text-[#A855F7]" />
-                   </div>
-                   <div className="absolute -top-16 left-1/4 p-3 bg-white rounded-xl shadow-xl animate-bounce duration-[4000ms] delay-200">
-                      <Image className="w-8 h-8 text-[#EF4444]" />
-                   </div>
-                   <div className="absolute -top-12 right-1/4 p-3 bg-white rounded-xl shadow-xl animate-bounce duration-[3500ms] delay-500">
-                      <Sparkles className="w-8 h-8 text-[#06B6D4]" />
-                   </div>
-                   <div className="absolute -top-8 right-0 p-3 bg-white rounded-xl shadow-xl animate-bounce duration-[4500ms] delay-100">
-                      <Video className="w-8 h-8 text-[#6366F1]" />
-                   </div>
-                   <div className="absolute top-1/2 -right-16 p-3 bg-white rounded-xl shadow-xl animate-bounce duration-[5000ms] delay-700">
-                      <ShieldAlert className="w-8 h-8 text-[#22C55E]" />
-                   </div>
-                   <div className="absolute -bottom-8 right-12 p-3 bg-white rounded-xl shadow-xl animate-bounce duration-[3800ms] delay-300">
-                      <Braces className="w-8 h-8 text-[#1E293B]" />
-                   </div>
-                </div>
+                <img 
+                  src={heroIllustration} 
+                  alt="Project 099 Illustration" 
+                  className="w-full h-auto drop-shadow-2xl"
+                />
               </div>
             </motion.div>
           </div>
