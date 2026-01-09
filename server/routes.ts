@@ -135,13 +135,15 @@ async function seedTools() {
   const toolsList = await storage.getTools();
   if (toolsList.length === 0) {
     const initialTools = [
-      { slug: "remove-bg", name: "Background Remover", description: "Remove background from images instantly", category: "image", icon: "Eraser", creditCost: 2, isPopular: true },
-      { slug: "image-resize", name: "Image Resizer", description: "Resize images to any dimension", category: "image", icon: "Maximize", creditCost: 1 },
-      { slug: "pdf-merge", name: "PDF Merge", description: "Combine multiple PDFs into one", category: "pdf", icon: "Files", creditCost: 1 },
-      { slug: "video-compress", name: "Video Compressor", description: "Reduce video size without losing quality", category: "video", icon: "Video", creditCost: 5, isPopular: true },
-      { slug: "ai-chat", name: "AI Assistant", description: "Chat with advanced AI models", category: "ai", icon: "Bot", creditCost: 1 },
-      { slug: "json-formatter", name: "JSON Formatter", description: "Beautify and validate JSON", category: "dev", icon: "Braces", creditCost: 0 },
-      { slug: "breach-check", name: "Breach Checker", description: "Check if your email has been compromised", category: "security", icon: "ShieldAlert", creditCost: 0, isPopular: true },
+      { slug: "remove-bg", name: "Remove background", description: "Instantly erase image backgrounds", category: "image", icon: "Eraser", creditCost: 2, isPopular: true },
+      { slug: "pdf-merge", name: "Merge PDF", description: "Combine your PDF files with ease", category: "pdf", icon: "Files", creditCost: 1, isPopular: true },
+      { slug: "text-to-image", name: "Text to Image AI", description: "Generate stunning images from text", category: "ai", icon: "Sparkles", creditCost: 3, isPopular: true },
+      { slug: "video-convert", name: "MP4 to MP3", description: "Convert video audio in seconds", category: "video", icon: "Music", creditCost: 2, isPopular: true },
+      
+      // Other tools
+      { slug: "image-resize", name: "Image Resizer", description: "Resize images to any dimension", category: "image", icon: "Maximize", creditCost: 1, isPopular: false },
+      { slug: "json-formatter", name: "JSON Formatter", description: "Beautify and validate JSON", category: "dev", icon: "Braces", creditCost: 0, isPopular: false },
+      { slug: "breach-check", name: "Breach Checker", description: "Check if your email has been compromised", category: "security", icon: "ShieldAlert", creditCost: 0, isPopular: false },
     ];
 
     for (const tool of initialTools) {
