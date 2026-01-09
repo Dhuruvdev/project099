@@ -113,11 +113,13 @@ export default function ToolDetail() {
   const isFailed = job?.status === 'failed';
 
   return (
-    <div className="flex min-h-screen bg-background text-foreground">
-      <Sidebar />
+    <div className="flex min-h-screen bg-background text-foreground flex-col lg:flex-row">
+      <div className="lg:block hidden">
+        <Sidebar />
+      </div>
       
-      <main className="flex-1 p-4 lg:p-8 overflow-y-auto">
-        <div className="max-w-4xl mx-auto">
+      <main className="flex-1 p-4 lg:p-8 overflow-y-auto w-full">
+        <div className="max-w-6xl mx-auto">
           
           <Link href="/">
             <Button variant="ghost" className="mb-6 pl-0 hover:pl-2 transition-all">
@@ -125,12 +127,12 @@ export default function ToolDetail() {
             </Button>
           </Link>
 
-          <header className="mb-10">
-            <h1 className="text-3xl lg:text-4xl font-display font-bold mb-3">{tool.name}</h1>
-            <p className="text-lg text-muted-foreground">{tool.description}</p>
+          <header className="mb-6 lg:mb-10">
+            <h1 className="text-2xl lg:text-4xl font-display font-bold mb-2 lg:mb-3">{tool.name}</h1>
+            <p className="text-base lg:text-lg text-muted-foreground">{tool.description}</p>
           </header>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
             
             {/* Sidebar Tools Navigation - Desktop only like screenshot */}
             <div className="hidden lg:block lg:col-span-3">
@@ -140,7 +142,7 @@ export default function ToolDetail() {
                        <Image className="w-4 h-4 mr-2" /> Image Tools
                     </Button>
                     <div className="pl-6 space-y-1">
-                       <Button variant="secondary" className="w-full justify-start bg-primary/10 text-primary hover:bg-primary/20 rounded-lg h-9">
+                       <Button variant={slug === 'remove-bg' ? 'secondary' : 'ghost'} className={`w-full justify-start rounded-lg h-9 ${slug === 'remove-bg' ? 'bg-primary/10 text-primary hover:bg-primary/20' : 'text-muted-foreground hover:bg-muted/50'}`}>
                           Background Remover
                        </Button>
                        <Button variant="ghost" className="w-full justify-start text-muted-foreground hover:bg-muted/50 rounded-lg h-9">
@@ -166,9 +168,9 @@ export default function ToolDetail() {
             </div>
 
             {/* Main Content Area */}
-            <div className="lg:col-span-9 space-y-8">
-              <div className="bg-white border border-border rounded-[2rem] p-8 shadow-sm">
-                <div className="grid lg:grid-cols-2 gap-12">
+            <div className="lg:col-span-9 space-y-6 lg:space-y-8">
+              <div className="bg-white border border-border rounded-[1.5rem] lg:rounded-[2rem] p-5 lg:p-8 shadow-sm">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                    {/* Upload Section */}
                    <div className="space-y-6">
                       <ObjectUploader
@@ -192,21 +194,21 @@ export default function ToolDetail() {
                           };
                         }}
                       >
-                        <div className="border-2 border-dashed border-border/60 rounded-[1.5rem] p-12 flex flex-col items-center justify-center text-center hover:bg-muted/30 hover:border-primary/40 transition-all cursor-pointer group relative min-h-[300px]">
-                          <div className="w-16 h-16 bg-[#F1F5F9] rounded-2xl flex items-center justify-center mb-6">
-                            <Image className="w-8 h-8 text-[#3B82F6]" />
+                        <div className="border-2 border-dashed border-border/60 rounded-[1rem] lg:rounded-[1.5rem] p-8 lg:p-12 flex flex-col items-center justify-center text-center hover:bg-muted/30 hover:border-primary/40 transition-all cursor-pointer group relative min-h-[250px] lg:min-h-[300px]">
+                          <div className="w-12 h-12 lg:w-16 lg:h-16 bg-[#F1F5F9] rounded-xl lg:rounded-2xl flex items-center justify-center mb-4 lg:mb-6">
+                            <Image className="w-6 h-6 lg:w-8 lg:h-8 text-[#3B82F6]" />
                           </div>
-                          <p className="text-xl font-semibold text-[#1E293B]">Drop an image here or</p>
-                          <Button className="mt-4 bg-[#8B5CF6] hover:bg-[#7C3AED] text-white px-10 rounded-xl h-12 shadow-lg shadow-purple-500/30">
+                          <p className="text-lg lg:text-xl font-semibold text-[#1E293B]">Drop an image here or</p>
+                          <Button className="mt-4 bg-[#8B5CF6] hover:bg-[#7C3AED] text-white px-8 lg:px-10 rounded-xl h-12 shadow-lg shadow-purple-500/30">
                              Upload Image
                           </Button>
                         </div>
                       </ObjectUploader>
 
-                      <div className="flex bg-[#F1F5F9] p-1.5 rounded-xl gap-1">
-                         <Button variant="secondary" className="flex-1 bg-white shadow-sm text-primary rounded-lg h-9">Background Remover</Button>
-                         <Button variant="ghost" className="flex-1 text-muted-foreground rounded-lg h-9">Image Compressor</Button>
-                         <Button variant="ghost" className="flex-1 text-muted-foreground rounded-lg h-9">Image Resize</Button>
+                      <div className="flex bg-[#F1F5F9] p-1 rounded-lg lg:rounded-xl gap-1 overflow-x-auto">
+                         <Button variant="secondary" className="flex-1 bg-white shadow-sm text-primary rounded-md lg:rounded-lg h-8 lg:h-9 whitespace-nowrap px-3 text-xs lg:text-sm">Background Remover</Button>
+                         <Button variant="ghost" className="flex-1 text-muted-foreground rounded-md lg:rounded-lg h-8 lg:h-9 whitespace-nowrap px-3 text-xs lg:text-sm">Image Compressor</Button>
+                         <Button variant="ghost" className="flex-1 text-muted-foreground rounded-md lg:rounded-lg h-8 lg:h-9 whitespace-nowrap px-3 text-xs lg:text-sm">Image Resize</Button>
                       </div>
 
                       {fileName && (
@@ -216,12 +218,12 @@ export default function ToolDetail() {
                         </div>
                       )}
                       
-                      <div className="flex justify-end pt-4">
+                      <div className="flex justify-end pt-2">
                         <Button 
                           size="lg" 
                           onClick={handleProcess} 
                           disabled={isProcessing || (!inputText && !fileUrl)}
-                          className="bg-[#3B82F6] hover:bg-[#2563EB] text-white px-8 rounded-xl h-12 shadow-lg shadow-blue-500/20"
+                          className="w-full sm:w-auto bg-[#3B82F6] hover:bg-[#2563EB] text-white px-8 rounded-xl h-12 shadow-lg shadow-blue-500/20"
                         >
                           {isProcessing ? (
                             <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Processing...</>
@@ -233,22 +235,22 @@ export default function ToolDetail() {
                    </div>
 
                    {/* Preview / Info Section */}
-                   <div className="space-y-8 flex flex-col justify-center">
+                   <div className="space-y-6 lg:space-y-8 flex flex-col justify-center">
                       <div className="relative">
-                         <div className="w-full aspect-square rounded-2xl bg-[#F8F9FE] flex items-center justify-center overflow-hidden">
+                         <div className="w-full aspect-square rounded-[1rem] lg:rounded-2xl bg-[#F8F9FE] flex items-center justify-center overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000&auto=format&fit=crop" alt="Preview" className="w-full h-full object-cover grayscale opacity-50" />
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#F8F9FE]/80" />
                          </div>
                       </div>
 
-                      <div className="space-y-4">
+                      <div className="space-y-3 lg:space-y-4">
                          {[
                            { icon: <Sparkles className="w-4 h-4 text-orange-400" />, text: "Remove background fast" },
                            { icon: <ShieldAlert className="w-4 h-4 text-blue-400" />, text: "100% automatic & free to use" },
                            { icon: <Image className="w-4 h-4 text-pink-400" />, text: "Keep high image quality" },
                            { icon: <Braces className="w-4 h-4 text-gray-700" />, text: "AI-powered processing" },
                          ].map((item, i) => (
-                           <div key={i} className="flex items-center gap-3 text-[#334155] font-medium">
+                           <div key={i} className="flex items-center gap-3 text-[#334155] font-medium text-sm lg:text-base">
                              {item.icon} {item.text}
                            </div>
                          ))}

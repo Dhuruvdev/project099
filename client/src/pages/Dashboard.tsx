@@ -102,7 +102,7 @@ export default function Dashboard() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 + (idx * 0.1) }}
-                className="bg-white border border-border/50 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 group relative"
+                className="bg-white border border-border/50 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 group relative flex flex-col sm:block"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className={`p-2 rounded-lg ${cat.bg} ${cat.color}`}>
@@ -111,10 +111,10 @@ export default function Dashboard() {
                   <h3 className="text-xl font-bold">{cat.name}</h3>
                 </div>
                 <p className="text-slate-600 text-sm mb-12">{cat.desc}</p>
-                <div className="absolute bottom-6 right-6 flex items-center gap-3">
+                <div className="mt-auto sm:absolute sm:bottom-6 sm:right-6 flex items-center gap-3 justify-end">
                   <div className="h-px w-24 bg-slate-100 hidden sm:block" />
                   <Link href={`/category/${cat.id}`}>
-                    <Button className="bg-[#8B5CF6] hover:bg-[#7C3AED] text-white px-6 rounded-lg h-9 text-sm font-medium border-0 shadow-lg shadow-purple-500/20">
+                    <Button className="bg-[#8B5CF6] hover:bg-[#7C3AED] text-white px-8 sm:px-6 rounded-lg h-10 sm:h-9 text-base sm:text-sm font-medium border-0 shadow-lg shadow-purple-500/20 w-full sm:w-auto">
                       Try Now
                     </Button>
                   </Link>
