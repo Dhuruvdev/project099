@@ -118,7 +118,7 @@ export default function Dashboard() {
                       View All
                     </Button>
                   </Link>
-                  <Link href={`/tools/${cat.id === 'image' ? 'remove-bg' : cat.id === 'pdf' ? 'pdf-merge' : cat.id === 'ai' ? 'text-to-image' : tools?.find(t => t.category === cat.id)?.slug || '#'}`}>
+                  <Link href={cat.id === 'image' ? "/image-tools" : `/tools/${cat.id === 'pdf' ? 'pdf-merge' : cat.id === 'ai' ? 'text-to-image' : tools?.find(t => t.category === cat.id)?.slug || '#'}`}>
                     <Button className="bg-[#8B5CF6] hover:bg-[#7C3AED] text-white px-8 sm:px-6 rounded-lg h-10 sm:h-9 text-base sm:text-sm font-medium border-0 shadow-lg shadow-purple-500/20 w-full sm:w-auto">
                       Try Now
                     </Button>

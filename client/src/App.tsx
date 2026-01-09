@@ -8,6 +8,7 @@ import Dashboard from "@/pages/Dashboard";
 import ToolDetail from "@/pages/ToolDetail";
 import Login from "@/pages/Login";
 import Pricing from "@/pages/Pricing";
+import ImageTools from "@/pages/ImageTools";
 import { useAuth } from "@/hooks/use-auth";
 import { Loader2 } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
@@ -41,6 +42,11 @@ function Router() {
         <Route path="/pricing">
           <PageTransition>
             <Pricing />
+          </PageTransition>
+        </Route>
+        <Route path="/image-tools">
+          <PageTransition>
+            <ImageTools />
           </PageTransition>
         </Route>
         <Route path="/tools/:slug">

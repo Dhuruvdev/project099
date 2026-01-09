@@ -18,7 +18,7 @@ import { useCredits } from "@/hooks/use-tools";
 
 const NAV_ITEMS = [
   { label: "Dashboard", icon: LayoutGrid, href: "/" },
-  { label: "Image Tools", icon: ImageIcon, href: "/category/image" },
+  { label: "Image Tools", icon: ImageIcon, href: "/image-tools" },
   { label: "PDF Tools", icon: FileText, href: "/category/pdf" },
   { label: "Video Tools", icon: Video, href: "/category/video" },
   { label: "AI Tools", icon: BrainCircuit, href: "/category/ai" },
