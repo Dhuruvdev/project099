@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { useTools } from "@/hooks/use-tools";
-import { Image, FileText, Video, BrainCircuit, ShieldAlert, Braces, Sparkles, ArrowRight, Eraser, Music } from "lucide-react";
+import { Image, FileText, Video, BrainCircuit, ShieldAlert, Braces, Sparkles, ArrowRight, Eraser, Music, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
