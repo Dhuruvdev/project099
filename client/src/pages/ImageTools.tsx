@@ -1,9 +1,8 @@
 import { Navbar } from "@/components/Navbar";
-import { Sidebar } from "@/components/Sidebar";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { Eraser, ImageIcon, Sliders, Type, FileImage, ShieldCheck, Sparkles, Upload, Loader2 } from "lucide-react";
+import { Eraser, ImageIcon, Sliders, Type, FileImage, ShieldCheck, Sparkles, Upload, FileText, Video } from "lucide-react";
 import portraitImage from "@assets/generated_images/portrait_of_a_woman_with_curly_hair_on_a_transparent_background_with_purple_accents.png";
 import { Helmet } from "react-helmet";
 
@@ -17,129 +16,132 @@ const TOOLS = [
 
 export default function ImageTools() {
   return (
-    <div className="flex min-h-screen bg-[#F8FAFC]">
+    <div className="h-screen w-screen overflow-hidden flex flex-col bg-[#0F0720]">
       <Helmet>
-        <title>Professional Online Image Tools - Background Remover, Compressor & More | Project 099</title>
-        <meta name="description" content="Access professional online image tools. Instantly remove backgrounds with AI, compress images without quality loss, resize, and convert images for free. Fast, secure, and easy to use." />
-        <meta property="og:title" content="Professional Online Image Tools | Project 099" />
-        <meta property="og:description" content="AI-powered background removal, high-quality image compression, and professional resizing tools in one platform." />
-        <meta name="keywords" content="background remover, image compressor, image resizer, online image tools, AI image editor, remove bg online" />
+        <title>Remove Background - Project 099</title>
+        <meta name="description" content="Instantly erase image backgrounds with just one click." />
       </Helmet>
-      <Sidebar />
-      <div className="flex-1 flex flex-col">
-        <Navbar />
-        
-        <main className="flex-1 p-4 lg:p-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="bg-white rounded-[32px] shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden flex flex-col lg:flex-row min-h-[600px]">
-              
-              {/* Left Sidebar - Tool Selection */}
-              <div className="w-full lg:w-72 bg-[#F8FAFC] border-r border-slate-100 p-6 flex flex-col gap-8">
-                <div className="space-y-4">
-                  <div className="flex items-center gap-2 text-slate-900 font-bold px-2">
-                    <ImageIcon className="w-5 h-5 text-indigo-600" />
-                    <span>Image Tools</span>
-                  </div>
-                  <div className="space-y-1">
-                    {TOOLS.map((tool) => (
-                      <button
-                        key={tool.id}
-                        className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
-                          tool.active 
-                            ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-200' 
-                            : 'text-slate-500 hover:bg-slate-100 hover:text-slate-900'
-                        }`}
-                      >
-                        {tool.icon}
-                        {tool.name}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <button className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-500 hover:bg-slate-100">
-                    <FileImage className="w-5 h-5" />
-                    PDF Tools
-                  </button>
-                  <button className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-500 hover:bg-slate-100">
-                    <ShieldCheck className="w-5 h-5" />
-                    Video Tools
-                  </button>
-                </div>
-
-                <div className="mt-auto">
-                  <div className="bg-indigo-600 rounded-xl p-4 text-white relative overflow-hidden group cursor-pointer">
-                    <div className="absolute top-0 right-0 p-2 opacity-20">
-                      <Sparkles className="w-12 h-12" />
-                    </div>
-                    <p className="text-xs font-bold mb-1 uppercase tracking-wider">Pro</p>
-                    <p className="text-sm font-bold">Unlock All Features ?</p>
-                  </div>
-                </div>
+      
+      {/* Header matching dashboard navbar exactly */}
+      <Navbar />
+      
+      <main className="flex-1 flex overflow-hidden p-4 lg:p-8 justify-center items-center">
+        <div className="w-full max-w-7xl h-full flex bg-white/95 backdrop-blur-md rounded-[40px] shadow-2xl overflow-hidden border border-white/20">
+          
+          {/* Left Sidebar - Exact Screenshot Replication */}
+          <div className="w-72 bg-[#F3F4F9] border-r border-slate-200/50 p-8 flex flex-col gap-10 hidden lg:flex">
+            <div className="space-y-6">
+              <div className="flex items-center gap-3 text-[#2D2E5F] font-bold px-2">
+                <ImageIcon className="w-6 h-6 text-indigo-500" />
+                <span className="text-lg">Image Tools</span>
               </div>
+              <div className="space-y-2">
+                {TOOLS.map((tool) => (
+                  <button
+                    key={tool.id}
+                    className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-2xl text-sm font-semibold transition-all ${
+                      tool.active 
+                        ? 'bg-[#8B5CF6] text-white shadow-xl shadow-purple-200' 
+                        : 'text-[#64748B] hover:bg-white/50 hover:text-[#2D2E5F]'
+                    }`}
+                  >
+                    {tool.icon}
+                    {tool.name}
+                  </button>
+                ))}
+              </div>
+            </div>
 
-              {/* Main Content Area */}
-              <div className="flex-1 p-8 lg:p-12 flex flex-col gap-8">
-                <div className="space-y-2">
-                  <h1 className="text-4xl font-display font-bold text-slate-900">Remove Background</h1>
-                  <p className="text-slate-500">Instantly erase image backgrounds with just one click.</p>
-                </div>
+            <div className="space-y-4">
+              <button className="w-full flex items-center gap-4 px-4 py-3 text-[#64748B] font-semibold hover:text-[#2D2E5F]">
+                <div className="p-2 bg-slate-200 rounded-lg"><FileText className="w-5 h-5" /></div>
+                PDF Tools
+              </button>
+              <button className="w-full flex items-center gap-4 px-4 py-3 text-[#64748B] font-semibold hover:text-[#2D2E5F]">
+                <div className="p-2 bg-slate-200 rounded-lg"><Video className="w-5 h-5" /></div>
+                Video Tools
+              </button>
+            </div>
 
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
-                  {/* Upload Area */}
-                  <div className="space-y-6">
-                    <div className="border-2 border-dashed border-slate-200 rounded-[24px] p-12 flex flex-col items-center justify-center gap-6 bg-slate-50/50 hover:bg-slate-50 transition-colors cursor-pointer group">
-                      <div className="w-16 h-16 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <ImageIcon className="w-8 h-8 text-indigo-400" />
-                      </div>
-                      <div className="text-center">
-                        <p className="text-slate-900 font-bold text-lg">Drop an image here or</p>
-                        <Button className="mt-4 bg-indigo-600 hover:bg-indigo-700 text-white px-8 rounded-xl h-12 shadow-lg shadow-indigo-200">
-                          Upload Image
-                        </Button>
-                      </div>
-                    </div>
-
-                    <div className="flex bg-slate-100 p-1 rounded-xl">
-                      <button className="flex-1 py-2 px-4 bg-indigo-600 text-white rounded-lg text-sm font-bold shadow-sm">Background Remover</button>
-                      <button className="flex-1 py-2 px-4 text-slate-500 text-sm font-medium">Image Compressor</button>
-                      <button className="flex-1 py-2 px-4 text-slate-500 text-sm font-medium">Image Resize</button>
-                    </div>
-                  </div>
-
-                  {/* Preview/Feature Area */}
-                  <div className="relative">
-                    <div className="aspect-square rounded-3xl overflow-hidden bg-slate-100 relative">
-                       {/* Checkerboard pattern simulation */}
-                      <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#000 10%, transparent 10%)', backgroundSize: '10px 10px' }} />
-                      <img src={portraitImage} alt="Preview" className="w-full h-full object-cover relative z-10" />
-                      <div className="absolute bottom-4 right-4 z-20">
-                         <div className="w-12 h-12 bg-white rounded-full shadow-xl flex items-center justify-center text-indigo-600">
-                            <Sparkles className="w-6 h-6" />
-                         </div>
-                      </div>
-                    </div>
-
-                    <div className="mt-8 space-y-4">
-                      {[
-                        { icon: <Sparkles className="w-5 h-5 text-amber-500" />, text: "Remove background fast" },
-                        { icon: <ShieldCheck className="w-5 h-5 text-indigo-500" />, text: "100% automatic & free to use" },
-                        { icon: <Sliders className="w-5 h-5 text-rose-500" />, text: "Keep high image quality" },
-                        { icon: <Sparkles className="w-5 h-5 text-slate-900" />, text: "AI-powered processing" },
-                      ].map((feature, i) => (
-                        <div key={i} className="flex items-center gap-3 text-slate-700 font-medium">
-                          {feature.icon}
-                          <span>{feature.text}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+            <div className="mt-auto">
+              <div className="bg-gradient-to-r from-[#6366F1] to-[#8B5CF6] rounded-2xl p-5 text-white shadow-lg relative overflow-hidden group cursor-pointer">
+                <div className="flex items-center gap-2">
+                  <span className="bg-white/20 px-2 py-0.5 rounded text-[10px] font-bold">PRO</span>
+                  <span className="text-sm font-bold">Unlock All Features ?</span>
                 </div>
               </div>
             </div>
           </div>
-        </main>
+
+          {/* Right Main Content area */}
+          <div className="flex-1 flex flex-col overflow-hidden bg-white">
+            <div className="p-8 lg:p-14 space-y-4">
+              <h1 className="text-4xl lg:text-5xl font-bold text-[#2D2E5F] tracking-tight">Remove Background</h1>
+              <p className="text-[#64748B] text-lg">Instantly erase image backgrounds with just one click.</p>
+            </div>
+
+            <div className="flex-1 px-8 lg:px-14 pb-14 grid lg:grid-cols-2 gap-12 items-start overflow-y-auto">
+              {/* Upload Card */}
+              <div className="bg-[#F8FAFF] rounded-[40px] p-10 border border-slate-100 flex flex-col gap-8 shadow-sm">
+                <div className="border-2 border-dashed border-slate-200 rounded-[32px] aspect-[4/3] flex flex-col items-center justify-center gap-6 bg-white hover:border-[#8B5CF6] transition-all cursor-pointer group">
+                  <div className="w-20 h-20 bg-[#F1F5F9] rounded-2xl flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
+                    <ImageIcon className="w-10 h-10 text-indigo-400" />
+                  </div>
+                  <div className="text-center">
+                    <p className="text-[#2D2E5F] font-bold text-xl">Drop an image here or</p>
+                    <Button className="mt-5 bg-[#8B5CF6] hover:bg-[#7C3AED] text-white px-10 rounded-2xl h-14 text-lg font-bold shadow-xl shadow-purple-200 border-0">
+                      Upload Image
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="flex bg-[#EEF2FF] p-1.5 rounded-2xl">
+                  <button className="flex-1 py-3 px-4 bg-[#8B5CF6] text-white rounded-xl text-sm font-bold shadow-md">Background Remover</button>
+                  <button className="flex-1 py-3 px-4 text-[#64748B] text-sm font-bold hover:text-indigo-600">Image Compressor</button>
+                  <button className="flex-1 py-3 px-4 text-[#64748B] text-sm font-bold hover:text-indigo-600">Image Resize</button>
+                </div>
+              </div>
+
+              {/* Preview & Features */}
+              <div className="flex flex-col gap-10">
+                <div className="aspect-[4/3] rounded-[40px] overflow-hidden relative shadow-2xl border-4 border-white">
+                  <div className="absolute inset-0 z-0" style={{ 
+                    backgroundImage: 'linear-gradient(45deg, #f0f0f0 25%, transparent 25%, transparent 75%, #f0f0f0 75%, #f0f0f0), linear-gradient(45deg, #f0f0f0 25%, white 25%, white 75%, #f0f0f0 75%, #f0f0f0)',
+                    backgroundSize: '20px 20px',
+                    backgroundPosition: '0 0, 10px 10px'
+                  }} />
+                  <img src={portraitImage} alt="Preview" className="w-full h-full object-cover relative z-10" />
+                  <div className="absolute bottom-6 right-6 z-20">
+                     <div className="w-14 h-14 bg-white rounded-full shadow-2xl flex items-center justify-center text-yellow-400 animate-pulse">
+                        <Sparkles className="w-8 h-8 fill-current" />
+                     </div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 gap-5">
+                  {[
+                    { icon: <Sparkles className="w-6 h-6 text-amber-400" />, text: "Remove background fast" },
+                    { icon: <ShieldCheck className="w-6 h-6 text-[#8B5CF6]" />, text: "100% automatic & free to use" },
+                    { icon: <Sliders className="w-6 h-6 text-rose-400" />, text: "Keep high image quality" },
+                    { icon: <Sparkles className="w-6 h-6 text-[#2D2E5F]" />, text: "AI-powered processing" },
+                  ].map((feature, i) => (
+                    <div key={i} className="flex items-center gap-4 text-[#2D2E5F] font-bold text-lg">
+                      <div className="p-2 bg-[#F1F5F9] rounded-xl">{feature.icon}</div>
+                      <span>{feature.text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      {/* Mobile Footer Navigation - for messy UI fix */}
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 p-3 flex justify-around items-center z-50">
+        <Link href="/"><Button variant="ghost" size="icon"><ImageIcon className="w-6 h-6 text-slate-400" /></Button></Link>
+        <Button className="bg-[#8B5CF6] rounded-full w-12 h-12 p-0 shadow-lg shadow-purple-200"><Upload className="w-6 h-6" /></Button>
+        <Link href="/pricing"><Button variant="ghost" size="icon"><Sparkles className="w-6 h-6 text-slate-400" /></Button></Link>
       </div>
     </div>
   );
